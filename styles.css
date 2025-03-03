@@ -697,14 +697,14 @@ canvas {
   justify-content: space-between;
   align-items: center;
   margin: 8px 0;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .blue_2 { color: #002366; font-weight: bold; }
 .green_2 { color: #228B22; font-weight: bold; }
 .red_2 { color: #D70000; font-weight: bold; }
-.small-text_2 { font-size: 14px; color: #228B22; }
-.small-text_2_1 { font-size: 14px; color: grey; }
+.small-text_2 { font-size: 25px; color: #228B22; }
+.small-text_2_1 { font-size: 25px; color: grey; }
 
 h3 {
   margin: 0;
