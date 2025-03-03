@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SALES Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> <!-- Plugin for Data Labels -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <h1>Sales Dashboard</h1>
+    </header>
+    <div class="grid">
+        <div class="incident-card">
+            <div class="header">
+              <h1 style="text-align: left;">ENQUIRY STATUS 2025</h1>
+              <h2 id="totalIncident" style="text-align: left;">500 Cr quoted <p id="lastMonthIncident"><b></b></p></h2>
+            </div>
+            <div class="breakdown">
+              <div class="item">
+                <p>Budgetary</p>
+                <h3 id="reportableAccident">300 Cr</h3>
+              </div>
+              <div class="item">
+                <p>Firm Value</p>
+                <h3 id="firstAid">200 Cr</h3>
+              </div>
+      </div>
+    </div>
+    <div class="incident-card">
+      <h2 style="align-items: left;">SALES PROJECTION</h2>
+      <div class="divider_2"></div>
+      
+      <div class="row_2">
+          <span>Target</span>
+          <span class="blue_2"><span id="target">235</span> Cr</span>
+      </div>
+
+      <div class="row_2">
+          <span>Order Booked</span>
+          <span class="green_2">
+              <span id="orderBooked">156</span> Cr 
+              <span class="small-text_2">(66%)</span>
+          </span>
+      </div>
+
+      <div class="row_2">
+          <span>Yet to Achieve</span>
+          <span class="red_2"><span id="yetToAchieve">79</span> Cr</span>
+      </div>
+      <span class="small-text_2_1" style="text-align: left;">3 months Left</span>
+    </div>
+    <div class="incident-card">
+      <h3>FIRM STATUS</h3>
+
+      <div class="content_3_3">
+          <div class="chart-container_3_3">
+              <canvas id="donutChart_3"></canvas>
+              <div class="center-text">
+                  <span id="totalValue" style="font-size: 75px;">220</span>Cr
+              </div>
+          </div>
+
+          <div class="treemap">
+              <div class="row">
+                  <div class="box green">JOB <br><span class="value">100 Cr</span></div>
+                  <div class="box red">LOST <br><span class="value">60 Cr</span></div>
+              </div>
+              <div class="row">
+                  <div class="box orange">ALIVE <br><span class="value">40 Cr</span></div>
+              </div>
+              <div class="row">
+                <div class="box orange">PREVIOUS YEAR ALIVE<br><span class="value">20 Cr</span></div>
+            </div>
+          </div>
+      </div>
+  </div>
+  
+      <div class="card" id="canteenAudit">Canteen Audit</div>
+      <div class="card" id="employeeHealthCheckup">Employee Health Checkup</div>
+      <div class="card" id="environmentIncidents">Environment Incidents</div>
+      <div class="card" id="canteenAudit">Canteen Audit</div>
+      <div class="card" id="employeeHealthCheckup">Employee Health Checkup</div>
+    </div>
+    <div class="grid2">
+        <div class="incident-card_2">
+          <h3>DEPARTMENT PERFORMANCE</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="incident-card_3">
+          <h3>MONTHLY PERFORMANCE</h3>
+          <canvas id="barChart_2"></canvas>
+        </div>
+        <div class="incident-card_2">
+            <h2 style="align-items: left;">PROSPECTIVE VERTICALS WISE</h2>
+            <div class="table-container_4" style="width: 900px; height: 300px;">
+              <table>
+                  <thead>
+                      <tr>
+                          <th>Verticals</th>
+                          <th>Total</th>
+                          <th>Very High</th>
+                          <th>High</th>
+                          <th>Medium</th>
+                          <th>Low</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td style="background-color:#CBCBCB;">Total</td>
+                          <td style="background-color:#CBCBCB;">5 cr</td>
+                          <td style="background-color: #CBCBCB;" class="highlight">4 cr</td>
+                          <td style="background-color: #CBCBCB;">1 cr</td>
+                          <td style="background-color: #CBCBCB;">0 cr</td>
+                          <td style="background-color: #CBCBCB;">0 cr</td>
+                      </tr>
+                      <tr>
+                          <td>INC</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1 (100%)</td>
+                          <td>0 (0%)</td>
+                      </tr>
+                      <tr>
+                          <td>EHS</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                      <tr>
+                          <td>PV</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                      <tr>
+                          <td>HEX</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                      <tr>
+                          <td>FMC</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                      <tr>
+                          <td>DAS</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                      <tr>
+                          <td>SKID</td>
+                          <td>5</td>
+                          <td class="highlight">4</td>
+                          <td>1</td>
+                          <td>0</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="incident-card_2">
+            
+                <h1 style="text-align: left;">PROSPECTIVE SUMMARY</h1>
+                <h2 id="totalIncident" style="text-align: left; font-size: 50px;">500 Cr <p id="lastMonthIncident"><b></b></p></h2>
+                <div class="breakdown">
+                    <div class="item">
+                      <p>Very High</p>
+                      <h3 id="reportableAccident">300 Cr</h3>
+                    </div>
+                    <div class="item">
+                      <p>High</p>
+                      <h3 id="firstAid">200 Cr</h3>
+                    </div>
+                    <div class="item">
+                        <p>Medium</p>
+                        <h3 id="reportableAccident">300 Cr</h3>
+                      </div>
+                      <div class="item">
+                        <p>Low</p>
+                        <h3 id="firstAid">200 Cr</h3>
+                      </div>
+                </div>
+                
+        </div>
+    </div>
+    <div class="grid">
+      <div class="incident-card">
+        <h2 style="align-items: left;">ENQUIRY PENDING</h2>
+        <div class="table-container_4">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Verticals</th>
+                      <th>Total</th>
+                      <th>Not Quoted</th>
+                      <th>Over Due</th>
+                      <th>Within Due</th>
+                      <th>Awaiting Clar</th>
+                      <th>Ontime </th>
+                      <th>Delay</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="background-color:#CBCBCB;">Total</td>
+                      <td style="background-color:#CBCBCB;">5</td>
+                      <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                      <td style="background-color: #CBCBCB;">1 </td>
+                      <td style="background-color: #CBCBCB;">0 </td>
+                      <td style="background-color: #CBCBCB;">0 </td>
+                      <td style="background-color: #CBCBCB;">0 (0%)</td>
+                      <td style="background-color: #CBCBCB;">0 (0%)</td>
+                  </tr>
+                  <tr>
+                      <td>INC</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1 (100%)</td>
+                      <td>0 (0%)</td>
+                  </tr>
+                  <tr>
+                      <td>EHS</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+                  <tr>
+                      <td>PV</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+                  <tr>
+                      <td>HEX</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+                  <tr>
+                      <td>FMC</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+                  <tr>
+                      <td>DAS</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+                  <tr>
+                      <td>SKID</td>
+                      <td>5</td>
+                      <td class="highlight">4</td>
+                      <td>1</td>
+                      <td>0</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="incident-card">
+      <h2 style="align-items: left;"> Major Clarificaiton PENDING</h2>
+      <div class="table-container_4">
+        <table>
+            <thead>
+                <tr>
+                    <th>Verticals</th>
+                    <th>Total</th>
+                    <th>Over Due</th>
+                    <th>Within Due</th>
+                    <th>Ontime </th>
+                    <th>Delay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="background-color:#CBCBCB;">Total</td>
+                    <td style="background-color:#CBCBCB;">5</td>
+                    <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                    <td style="background-color: #CBCBCB;">1 </td>
+                    <td style="background-color: #CBCBCB;">0 (0%)</td>
+                    <td style="background-color: #CBCBCB;">0 (0%)</td>
+                </tr>
+                <tr>
+                    <td>INC</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1 (100%)</td>
+                    <td>0 (0%)</td>
+                </tr>
+                <tr>
+                    <td>EHS</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>PV</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>HEX</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>FMC</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>DAS</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>SKID</td>
+                    <td>5</td>
+                    <td class="highlight">4</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="incident-card">
+    <h2 style="align-items: left;"> Minor Clarificaiton PENDING</h2>
+    <div class="table-container_4">
+      <table>
+          <thead>
+              <tr>
+                  <th>Verticals</th>
+                  <th>Total</th>
+                  <th>Over Due</th>
+                  <th>Within Due</th>
+                  <th>Ontime </th>
+                  <th>Delay</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td style="background-color:#CBCBCB;">Total</td>
+                  <td style="background-color:#CBCBCB;">5</td>
+                  <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                  <td style="background-color: #CBCBCB;">1 </td>
+                  <td style="background-color: #CBCBCB;">0 (0%)</td>
+                  <td style="background-color: #CBCBCB;">0 (0%)</td>
+              </tr>
+              <tr>
+                  <td>INC</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+              </tr>
+              <tr>
+                  <td>EHS</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>PV</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>HEX</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>FMC</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>DAS</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>SKID</td>
+                  <td>5</td>
+                  <td class="highlight">4</td>
+                  <td>1</td>
+                  <td>0</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+</div>
+<div class="incident-card">
+  <h2 style="align-items: left;"> FSR </h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Verticals</th>
+                <th>Total</th>
+                <th>Pending</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>PV</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>FMC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+
+            </tr>
+            <tr>
+                <td>DAS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>SKID</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="incident-card">
+  <h2 style="align-items: left;"> Technical Document</h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Verticals</th>
+                <th>Total</th>
+                <th>Over Due</th>
+                <th>Within Due</th>
+                <th>Ontime </th>
+                <th>Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                <td style="background-color: #CBCBCB;">1 </td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+                <td>0 (0%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>PV</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>FMC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>DAS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>SKID</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="incident-card">
+  <h2 style="align-items: left;"> CRF</h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Verticals</th>
+                <th>Total</th>
+                <th>Over Due</th>
+                <th>Within Due</th>
+                <th>Ontime </th>
+                <th>Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                <td style="background-color: #CBCBCB;">1 </td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+                <td>0 (0%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>PV</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>FMC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>DAS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>SKID</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="incident-card">
+  <h2 style="align-items: left;"> Budget</h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Verticals</th>
+                <th>Total</th>
+                <th>Over Due</th>
+                <th>Within Due</th>
+                <th>Ontime </th>
+                <th>Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                <td style="background-color: #CBCBCB;">1 </td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+                <td>0 (0%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>PV</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>FMC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>DAS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>SKID</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="incident-card">
+  <h2 style="align-items: left;"> JOB CLARIFICATION </h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Verticals</th>
+                <th>Total</th>
+                <th>Pending</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>PV</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>FMC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+
+            </tr>
+            <tr>
+                <td>DAS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>SKID</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="incident-card" style="height: 350px;">
+  <h2 style="align-items: left;"> NC CLOSURE</h2>
+  <div class="table-container_4">
+    <table>
+        <thead>
+            <tr>
+                <th>Division</th>
+                <th>Total</th>
+                <th>Over Due</th>
+                <th>Within Due</th>
+                <th>Ontime </th>
+                <th>Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#CBCBCB;">Total</td>
+                <td style="background-color:#CBCBCB;">5</td>
+                <td style="background-color: #CBCBCB;" class="highlight">4</td>
+                <td style="background-color: #CBCBCB;">1 </td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+                <td style="background-color: #CBCBCB;">0 (0%)</td>
+            </tr>
+            <tr>
+                <td>INC</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1 (100%)</td>
+                <td>0 (0%)</td>
+            </tr>
+            <tr>
+                <td>EHS</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Projects</td>
+                <td>5</td>
+                <td class="highlight">4</td>
+                <td>1</td>
+                <td>0</td>
+            </tr> 
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="incident-card" style="height: 350px;">
+  <div class="header">
+    <h1 style="text-align: left;">STAR RATING</h1>
+    <h2 id="totalIncident" style="text-align: left;">INC  <p id="lastMonthIncident"><b></b></p></h2>
+    <h2 id="totalIncident" style="text-align: left;"> ✯ 4.5/5 <p id="lastMonthIncident"><b></b></p></h2>
+  </div>
+  <div class="breakdown">
+    <div class="item">
+      <p>25-01</p>
+      <h3 id="reportableAccident">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-04</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-03</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>  
+</div>
+</div>
+<div class="incident-card" style="height: 350px;">
+  <div class="header">
+    <h1 style="text-align: left;">STAR RATING</h1>
+    <h2 id="totalIncident" style="text-align: left;">EHOUSE <p id="lastMonthIncident"><b></b></p></h2>
+    <h2 id="totalIncident" style="text-align: left;"> ✯ 4.5/5 <p id="lastMonthIncident"><b></b></p></h2>
+  </div>
+  <div class="breakdown">
+    <div class="item">
+      <p>25-01</p>
+      <h3 id="reportableAccident">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-04</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-03</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>  
+</div>
+</div>
+<div class="incident-card" style="height: 350px;">
+  <div class="header">
+    <h1 style="text-align: left;">STAR RATING</h1>
+    <h2 id="totalIncident" style="text-align: left;">PPED <p id="lastMonthIncident"><b></b></p></h2>
+    <h2 id="totalIncident" style="text-align: left;"> ✯ 4.5/5 <p id="lastMonthIncident"><b></b></p></h2>
+  </div>
+  <div class="breakdown">
+    <div class="item">
+      <p>25-01</p>
+      <h3 id="reportableAccident">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-04</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>
+    <div class="item">
+      <p>24-03</p>
+      <h3 id="firstAid">4.5/5</h3>
+    </div>  
+  </div>
+</div>
+<div class="incident-card">
+  <h2>Grow Green - 2025</h2>
+
+  <h1>INC</h1>
+  <h1 style="font-size: 45px;">🌱 7/12</h1>
+</div>
+<div class="incident-card">
+  <h2>Grow Green - 2025</h2>
+
+  <h1>EHOUSE</h1>
+  <h1 style="font-size: 45px;">🌱 7/12</h1>
+</div>
+<div class="incident-card">
+  <h2>Grow Green - 2025</h2>
+
+  <h1>PPED</h1>
+  <h1 style="font-size: 45px;">🌱 7/12</h1>
+</div>
+
+</div>
+<button class="team-btn" onclick="toggleTable()">Team Performance</button>
+
+    <!-- Sliding Table Panel -->
+    <div class="table-panel" id="tablePanel">
+        <button class="close-btn" onclick="toggleTable()">✖</button>
+
+        <!-- Collapsible Filter Button -->
+        <button class="filter-toggle-btn" onclick="toggleFilter()">Filter ▼</button>
+
+        <!-- Filter Options (Initially Hidden) -->
+        <div class="filter-container" id="filterContainer">
+            <h3>Filter Options</h3>
+            <label>Resp. Person</label>
+            <select id="personFilter" onchange="applyFilter()">
+                <option value="">All</option>
+            </select>
+            <label>Category</label>
+            <select id="categoryFilter" onchange="applyFilter()">
+                <option value="">All</option>
+            </select>
+            <label>Parameter</label>
+            <select id="parameterFilter" onchange="applyFilter()">
+                <option value="">All</option>
+            </select>
+        </div>
+
+        <!-- Performance Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Resp. Person</th>
+                        <th>Category</th>
+                        <th>Parameter</th>
+                        <th>Offer</th>
+                        <th>Major</th>
+                        <th>Minor</th>
+                        <th>CRF</th>
+                        <th>Technical</th>
+                        <th>Budget</th>
+                        <th>Job Clarification</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
